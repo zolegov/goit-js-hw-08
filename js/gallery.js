@@ -71,7 +71,7 @@ function createGallery() {
     .map(
       (image) => `
     <li class="gallery-item">
-        <a class="gallery-link" href="large-image.jpg">
+        <a class="gallery-link" href="${image.preview}">
             <img
             class="gallery-image"
             src="${image.preview}"
@@ -93,12 +93,13 @@ gallery.addEventListener("click", (event) => {
   if (event.target.nodeName !== "IMG") {
     return;
   }
-
+ 
   const instance = basicLightbox.create(
     `
 	  <img
             class="gallery-image"
             src="${event.target.dataset.source}"
+            alt="${event.target.alt}"
             />
       `,
     {
@@ -107,3 +108,4 @@ gallery.addEventListener("click", (event) => {
   );
   instance.show();
 });
+  
